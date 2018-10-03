@@ -1,0 +1,16 @@
+commentBorder=\#5F9EA0 | null | null | false | null | null
+commentText=\#5F9EA0 | null | null | false | null | null
+declBoder=\#DAA520 | null | false | null | null | null
+doctypeExternalId=\#DAA520 | null | false | null | null | null
+doctypeExternalPubref=\#DAA520 | null | false | null | null | null
+doctypeExtrenalSysref=\#DAA520 | null | false | null | null | null
+doctypeName=\#DAA520 | null | false | null | null | null
+eclipse.preferences.version=1
+entityReference=\#00BFFF | null | true | null | null | null
+overriddenByCSS=,commentBorder,commentText,declBoder,doctypeExternalId,doctypeExternalPubref,doctypeExtrenalSysref,doctypeName,entityReference,tagAttributeEquals,tagAttributeName,tagAttributeValue,tagBorder,tagName,xmlContent,
+tagAttributeEquals=\#EEEEEE | null | null | null | null | null
+tagAttributeName=\#BED6FF | null | null | null | null | null
+tagAttributeValue=\#DEB887 | null | null | null | null | null
+tagBorder=\#79ABFF | null | null | null | null | null
+tagName=\#BED6FF | null | null | null | false | false
+xmlContent=\#EEEEEE | null | null | null | null | null

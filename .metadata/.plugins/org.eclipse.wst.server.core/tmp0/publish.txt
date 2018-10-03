@@ -1,0 +1,5 @@
+#Tomcat publish data
+#Wed Oct 03 13:23:15 CEST 2018
+org.eclipse.jst.jee.server\:holaMundo=/Applications/Spring Tool Suite /pivotal-tc-server/instances/base-instance/wtpwebapps/holaMundo
+org.eclipse.jst.jee.server\:cineapp=/Applications/Spring Tool Suite /pivotal-tc-server/instances/base-instance/wtpwebapps/cineapp
+org.eclipse.jst.jee.server\:/binary\:/Users/carlos/.m2/repository/org/springframework/spring-web/5.1.0.RELEASE/spring-web-5.1.0.RELEASE.jar=/Applications/Spring Tool Suite /pivotal-tc-server/instances/base-instance/wtpwebapps/cineapp/WEB-INF/lib/spring-web-5.1.0.RELEASE.jar

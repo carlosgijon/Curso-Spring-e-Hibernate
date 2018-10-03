@@ -1,0 +1,14 @@
+Double=quoted string\=0,0,0,0,0,206,123,0
+Double\ quoted\ string=0,0,0,0,0,222,184,135
+Identifier=0,0,0,0,0,218,165,32
+Keyword=0,0,0,0,0,0,191,255
+Multi-line=comment\=0,0,0,0,0,183,183,183
+Multi-line\ comment=0,0,0,0,0,95,158,160
+Others=0,0,0,0,0,238,238,238
+Single=quoted string\=0,0,0,0,0,206,123,0
+Single\ quoted\ string=0,0,0,0,0,222,184,135
+Single-line=comment\=0,0,0,0,0,183,183,183
+Single-line\ comment=0,0,0,0,0,95,158,160
+Type=0,0,0,0,0,95,158,160
+eclipse.preferences.version=1
+overriddenByCSS=,Others,Type,Identifier,Keyword,Multi-line comment,Double quoted string,Single-line comment,Single quoted string,

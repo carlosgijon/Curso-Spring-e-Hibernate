@@ -1,0 +1,54 @@
+package net.itinajero.app.controller;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class HomeController {
+
+	@RequestMapping(value="/home", method=RequestMethod.GET)
+	public String goHome(){
+		return "home";
+	}
+	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String mostrarPrincipal(Model model) {
+		
+		// Creamos una variable de tipo List de String
+		List<String> peliculas = new LinkedList<>();
+		
+		// Con el método add añadimos valores a la lista.
+		peliculas.add("Rapido y furioso");
+		peliculas.add("El aro 2");
+		peliculas.add("Aliens");
+		
+		// Se añade la lista al modelo de datos
+		model.addAttribute("peliculas", peliculas);
+
+		return "home";
+	}
+	
+	@RequestMapping(value="/detail")
+	public String mostrarDetalle(Model model) {
+		// Creamos variables con la informacion a mostrar de cada pelicula
+		String tituloPelicula = "Rapidos y furiosos";
+		int duracion = 136;
+		double precioEntrada = 50;
+		
+		// Para agregar las variables al modelo, usamos el objeto model
+		// con el metodo addAtribute
+		model.addAttribute("titulo", tituloPelicula);
+		model.addAttribute("duracion", duracion);
+		model.addAttribute("precio", precioEntrada);
+		
+		// Vamos a devolver el nombre de la vista, por lo que habrá que crear un archivo
+		// .jsp con el nombre de la vista
+		return "detalle";
+	}
+	
+}
