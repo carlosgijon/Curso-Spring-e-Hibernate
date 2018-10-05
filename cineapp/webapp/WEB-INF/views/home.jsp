@@ -192,6 +192,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
     <script src="${urlPublic}/bootstrap/js/bootstrap.min.js"></script> 
+    
+    <!-- Script para evitar los problemas con Chrome -->
     <script type="text/javascript">
     $(document).ready(function () {
         var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
@@ -203,10 +205,7 @@
             }, 300);
         }
     });
-    
-    
-    
-    
     </script>
+    
   </body>
 </html>
