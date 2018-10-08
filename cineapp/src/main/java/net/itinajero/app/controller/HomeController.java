@@ -102,12 +102,23 @@ public class HomeController {
 			pelicula4.setImagen("kong.png");
 			pelicula4.setEstatus("inactiva");
 			
+			Pelicula pelicula5 = new Pelicula();
+			pelicula5.setId(5);
+			pelicula5.setTitulo("Life: Vida Inteligente");
+			pelicula5.setDuracion(104);
+			pelicula5.setClasificacion("B");
+			pelicula5.setGenero("Drama");
+			pelicula5.setFechaEstreno(formatter.parse("10-06-2017"));
+			pelicula5.setImagen("estreno5.png");
+			pelicula5.setEstatus("Activa");
+			
 			
 			// Agregamos las peliculas a la lista
 			lista.add(pelicula1);
 			lista.add(pelicula2);
 			lista.add(pelicula3);
 			lista.add(pelicula4);
+			lista.add(pelicula5);
 			
 			return lista;
 			

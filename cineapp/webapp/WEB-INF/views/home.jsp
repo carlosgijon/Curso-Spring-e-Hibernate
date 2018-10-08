@@ -1,5 +1,8 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
+<!-- Agregamos la libreria jstl para recorrer el listado de peliculas  -->
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,26 +21,8 @@
 
   <body>
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">My CineSite</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">            
-            <li><a href="#">Acerca</a></li>
-            <li><a href="#">Login</a></li>            
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+	<!-- INCLUDE MENU -->
+	<jsp:include page="includes/menu.jsp"></jsp:include>
 
     <div class="container theme-showcase" role="main">
 
@@ -98,50 +83,21 @@
       <div class="container marketing">
 
         <div class="row">
-
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <img class="img-rounded" src="${urlPublic}/images/estreno1.png" alt="Generic placeholder image" width="150" height="200">
-            <h4>En este Rincón del Mundo</h4>
-            <h4>
-              <span class="label label-default">A</span>
-              <span class="label label-default">130 min</span>
-              <span class="label label-default">Drama</span>
-            </h4>         
-            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
-          </div>
-
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <img class="img-rounded" src="${urlPublic}/images/estreno2.png" alt="Generic placeholder image" width="150" height="200">
-            <h4>Logan: Wolverine</h4>
-            <h4>
-              <span class="label label-default">C</span>
-              <span class="label label-default">135 min</span>
-              <span class="label label-default">Acción</span>
-            </h4>         
-            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
-          </div>
-
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <img class="img-rounded" src="${urlPublic}/images/estreno3.png" alt="Generic placeholder image" width="150" height="200">
-            <h4>Fragmentado</h4>
-            <h4>
-              <span class="label label-default">B15</span>
-              <span class="label label-default">118 min</span>
-              <span class="label label-default">Thriller</span>
-            </h4>         
-            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
-          </div>
-
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <img class="img-rounded" src="${urlPublic}/images/estreno4.png" alt="Generic placeholder image" width="150" height="200">
-            <h4>Kong La Isla Calavera</h4>
-            <h4>
-              <span class="label label-default">B</span>
-              <span class="label label-default">118 min</span>
-              <span class="label label-default">Acción y aventura</span>
-            </h4>         
-            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
-          </div>
+        
+        <!-- GENERAR PELICULAS DINAMICAMENTE -->
+        
+        <c:forEach items="${peliculas}" var="pelicula">
+        	<div class="col-xs-12 col-sm-6 col-md-3">
+	            <img class="img-rounded" src="${urlPublic}/images/${pelicula.imagen}" alt="Generic placeholder image" width="150" height="200">
+	            <h4>${pelicula.titulo}</h4>
+	            <h4>
+	              <span class="label label-default">${pelicula.clasificacion}</span> 
+	              <span class="label label-default">${pelicula.duracion}</span>
+	              <span class="label label-default">${pelicula.genero}</span>
+	            </h4>         
+	            <p><a class="btn btn-sm btn-primary" href="#" role="button">Consulta Horarios &raquo;</a></p>
+          	</div>
+        </c:forEach>
 
         </div>
 
@@ -179,11 +135,8 @@
 
       </div>
 
-      <!-- FOOTER -->
-      <footer>        
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 My CineSite, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
+    <!-- INCLUDE FOOTER -->
+	<jsp:include page="includes/footer.jsp"></jsp:include>
 
     </div> <!-- /container -->
 
