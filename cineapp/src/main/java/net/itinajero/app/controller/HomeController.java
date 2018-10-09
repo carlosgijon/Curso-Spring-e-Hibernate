@@ -2,11 +2,13 @@ package net.itinajero.app.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,6 +16,9 @@ import net.itinajero.app.model.Pelicula;
 
 @Controller
 public class HomeController {
+	
+	// Creamos una variable de instancia para la fecha del sistema
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String goHome(){
@@ -31,23 +36,32 @@ public class HomeController {
 //		peliculas.add("Aliens");
 		
 		// Pasamos la lista al modelo de datos
+		// Pasamos tambien la fecha de sistema
+		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		model.addAttribute("peliculas", peliculas);
 
 		return "home";
 	}
 	
-	@RequestMapping(value="/detail")
-	public String mostrarDetalle(Model model) {
-		// Creamos variables con la informacion a mostrar de cada pelicula
-		String tituloPelicula = "Rapidos y furiosos";
-		int duracion = 136;
-		double precioEntrada = 50;
+	@RequestMapping(value="/detail/{id}/{fecha}", method=RequestMethod.GET)
+	public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula, @PathVariable("fecha") String fecha) {
 		
-		// Para agregar las variables al modelo, usamos el objeto model
-		// con el metodo addAtribute
-		model.addAttribute("titulo", tituloPelicula);
-		model.addAttribute("duracion", duracion);
-		model.addAttribute("precio", precioEntrada);
+		// PROBAR LA URL DINAMICA
+		System.out.println("Buscando horarios para la pelicula: " + idPelicula);
+		System.out.println("Para la fecha: " + fecha);
+		
+		// TODO - Buscar en la BBDD los horarios
+		
+//		// Creamos variables con la informacion a mostrar de cada pelicula
+//		String tituloPelicula = "Rapidos y furiosos";
+//		int duracion = 136;
+//		double precioEntrada = 50;
+//		
+//		// Para agregar las variables al modelo, usamos el objeto model
+//		// con el metodo addAtribute
+//		model.addAttribute("titulo", tituloPelicula);
+//		model.addAttribute("duracion", duracion);
+//		model.addAttribute("precio", precioEntrada);
 		
 		// Vamos a devolver el nombre de la vista, por lo que habrá que crear un archivo
 		// .jsp con el nombre de la vista
