@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import net.itinajero.app.model.Pelicula;
+import net.itinajero.app.util.Utileria;
 
 @Controller
 public class HomeController {
@@ -25,9 +27,16 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String mostrarPrincipal(Model model) {
+	@RequestMapping(value="/search", method = RequestMethod.POST)
+	public String buscar(@RequestParam("fecha") String fecha, Model model) {
 		
+		System.out.println("Buscando las peliculas para la fecha " + fecha);
+		
+		// Todo esto se pega del método mostrar principal para que se pinten las fechas en el formulario
+		// Al hacer click. Como el parámetro fecha le viene del formulario, cambiamos el atributo del modelo
+		// para que envie lo que le venga por el parámetro fecha
+		
+		List<String> listaFechas = Utileria.getNextDays(4);
 		List<Pelicula> peliculas = getLista();
 		
 		// Añadimos una a una las peliculas
@@ -37,18 +46,44 @@ public class HomeController {
 		
 		// Pasamos la lista al modelo de datos
 		// Pasamos tambien la fecha de sistema
+		// Agregamos al modelo la lista de fechas
+		model.addAttribute("fechaBusqueda", fecha);
+		model.addAttribute("peliculas", peliculas);
+		model.addAttribute("fechas", listaFechas);
+		
+		return "home";
+		
+	}
+	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String mostrarPrincipal(Model model) {
+		
+		List<String> listaFechas = Utileria.getNextDays(4);
+		List<Pelicula> peliculas = getLista();
+		
+		// Añadimos una a una las peliculas
+//		peliculas.add("Rapido y furioso");
+//		peliculas.add("El aro 2");
+//		peliculas.add("Aliens");
+		
+		// Pasamos la lista al modelo de datos
+		// Pasamos tambien la fecha de sistema
+		// Agregamos al modelo la lista de fechas
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		model.addAttribute("peliculas", peliculas);
+		model.addAttribute("fechas", listaFechas);
 
 		return "home";
 	}
 	
-	@RequestMapping(value="/detail/{id}/{fecha}", method=RequestMethod.GET)
-	public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula, @PathVariable("fecha") String fecha) {
+	// @RequestMapping(value="/detail/{id}/{fecha}", method=RequestMethod.GET)
+	@RequestMapping(value="/detail", method=RequestMethod.GET)
+	//public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula, @PathVariable("fecha") String fecha) {
+		public String mostrarDetalle(Model model, @RequestParam("idMovie") int idPelicula, @RequestParam("fecha") String fecha) {
 		
 		// PROBAR LA URL DINAMICA
 		System.out.println("Buscando horarios para la pelicula: " + idPelicula);
-		System.out.println("Para la fecha: " + fecha);
+		System.out.println("para la fecha " + fecha);
 		
 		// TODO - Buscar en la BBDD los horarios
 		
